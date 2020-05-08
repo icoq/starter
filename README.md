@@ -1,3 +1,3 @@
 # About
 
-This is a simple starter package with gulp and other npm modules.
+This is a simple starter package with gulp and other node modules.
