@@ -72,7 +72,7 @@ gulp.task("html", () => {
         .pipe(sourcemaps.init())
         .pipe(
             fileInclude({
-                prefix: "@",
+                prefix: "~",
                 basepath: "@file",
             })
         )
@@ -108,7 +108,7 @@ gulp.task("js", () => {
         .pipe(sourcemaps.init())
         .pipe(
             fileInclude({
-                prefix: "@",
+                prefix: "~",
                 basepath: "@file",
             })
         )

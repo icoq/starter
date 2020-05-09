@@ -15,5 +15,3 @@ window.onload = function() {
         }
     });
 };
-
-alert("msg2");
