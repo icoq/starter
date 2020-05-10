@@ -38,7 +38,7 @@ const dist = "./dist/",
             vendorCSS: src + "vendor/**/*.css",
             vendorJS: src + "vendor/**/*.js",
             img: src + "img/**/*",
-            fonts: src + "fonts/**/*.ttf",
+            fonts: src + "fonts/**/*",
         },
         del: {
             all: dist,
