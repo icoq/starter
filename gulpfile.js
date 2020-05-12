@@ -32,7 +32,7 @@ const dist = "./dist/",
             fonts: dist + "fonts/",
         },
         src: {
-            html: src + "pages/**/*.html",
+            html: src + "*.html",
             scss: src + "scss/main.scss",
             js: src + "js/main.js",
             vendorCSS: src + "vendor/**/*.css",
@@ -52,7 +52,7 @@ const dist = "./dist/",
         },
 
         watch: {
-            html: src + "pages/**/*.html",
+            html: src + "*.html",
             scss: src + "scss/**/*.scss",
             js: src + "js/**/*.js",
             modulesHTML: src + "modules/**/*.html",
