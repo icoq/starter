@@ -1,4 +1,4 @@
-~include("../modules/header/header.js");
-~include("../modules/sidebar/sidebar.js");
-~include("../modules/footer/footer.js");
+~include("../modules/_header/header.js");
+~include("../modules/_sidebar/sidebar.js");
+~include("../modules/_footer/footer.js");
 ~include("./helper.js");
