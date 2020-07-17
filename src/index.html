@@ -3,11 +3,15 @@
   <!-- head -->
   ~include('_head.html', { "title": "Document", })
 
-  <body>
+  <body class="body">
     <!-- header -->
     ~include('_header.html')
 
-    <main class="main"></main>
+    <main class="main">
+      <div class="container main__container">
+        content
+      </div>
+    </main>
 
     <!-- sidebar -->
     ~include('_sidebar.html')

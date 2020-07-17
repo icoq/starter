@@ -1,0 +1,9 @@
+.footer {
+  &__container {
+    padding: $containerPadding;
+    background-color: $footerBGColor;
+    font-family: $footerFontFamily;
+    font-size: $footerFontSize;
+    min-height: $footerHeight;
+  }
+}

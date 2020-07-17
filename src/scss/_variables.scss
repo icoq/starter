@@ -7,6 +7,10 @@ $navPopupBGColor: rgb(230, 230, 230);
 
 $burgerColor: black;
 
+$navFontFamily: "";
+$navFontSize: 16px;
+$navFontSizeSM: 20px;
+
 $navHeight: 60px;
 $navLogoHeight: $navHeight + (-8);
 
@@ -17,23 +21,44 @@ $navLogoHeight: $navHeight + (-8);
 //
 //
 //!=== MAIN VARIABLES ==============================================================================!\\
-$mainColor: #ffffff;
-$secondColor: #ffffff;
+$mainColor: #000000;
+$secondColor: #000000;
+$mainBGColor: rgba(134, 134, 24, 0.301);
 $minWidth: 320px;
 $maxWidth: 1920px;
 $containerPadding: 10px;
-$maxContainerWidth: 1140 + $containerPadding;
+$maxContainerWidth: 1140 + $containerPadding * 2;
 
-$mainFontFamily: "Sans";
-$secondFontFamily: "Sans";
-$thirdFontFamily: "Sans";
+$mainFontFamily: "";
+$secondFontFamily: "";
+$thirdFontFamily: "";
 
-$lg: $maxContainerWidth + 12;
+$mainFontSize: 16px;
+$secondFontSize: 20px;
+
+$lg: $maxContainerWidth;
 $md: 992px;
 $sm: 768px;
 $xs: 480px;
 
 //!==================================================================================================!\\
+//
+//
+//
+//
+//
+//!=== FOOTER VARIABLES ===============================================================================!\\
+$footerColor: rgb(0, 0, 0);
+$footerColor_hover: rgb(0, 0, 255);
+
+$footerBGColor: rgba(0, 110, 255, 0.267);
+
+$footerFontFamily: "";
+$footerFontSize: 16px;
+
+$footerHeight: auto;
+
+//!=====================================================================================================!\\
 //
 //
 //

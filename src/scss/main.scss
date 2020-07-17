@@ -1,25 +1,19 @@
 @import "_fonts.scss";
 @import "_normalize.scss";
-@import "_smart-grid.scss";
+@import "_smartGrid.scss";
 @import "_variables.scss";
 @import "_mixins.scss";
+@import "_helper.scss";
 @import "_header.scss";
 @import "_sidebar.scss";
 @import "_form.scss";
 @import "_popup.scss";
 @import "_footer.scss";
 
-.container {
-  max-width: $maxContainerWidth;
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-  padding: 0 $containerPadding;
-}
-
-.wrapper {
-  width: 100%;
-  min-height: 100%;
-  display: flex;
-  align-items: center;
+.main {
+  color: $mainColor;
+  &__container {
+    height: 100vh;
+    background-color: $mainBGColor;
+  }
 }
