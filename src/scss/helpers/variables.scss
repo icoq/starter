@@ -1,8 +1,40 @@
-$mainColor: rgb(255, 255, 255);
-$secondColor: black;
-$bgColor: black;
+//!=== HEADER VARIABLES ===============================================================================!\\
+$navColor: rgb(0, 0, 0);
+$navColor_hover: rgb(0, 0, 255);
 
+$navBGColor: rgb(255, 255, 255);
+$navPopupBGColor: rgb(230, 230, 230);
+
+$burgerColor: black;
+
+$navHeight: 60px;
+$navLogoHeight: $navHeight + (-8);
+
+//!=====================================================================================================!\\
+
+//!=== MAIN VARIABLES ==============================================================================!\\
+$mainColor: #ffffff;
+$secondColor: #ffffff;
+$minWidth: 320px;
+$maxWidth: 1920px;
+$containerPadding: 10px;
+$maxContainerWidth: 1140 + $containerPadding;
+
+$mainFontFamily: "Sans";
+$secondFontFamily: "Sans";
+$thirdFontFamily: "Sans";
+
+$lg: $maxContainerWidth + 12;
+$md: 992px;
+$sm: 768px;
+$xs: 480px;
+
+//!==================================================================================================!\\
+
+//!=== TEMPLATE VARIABLES ==============================================================================!\\
 $btnBG: black;
 $btnColor: white;
 $btnBG_hover: rgb(255, 255, 255);
 $btnColor_hover: rgb(0, 0, 0);
+
+//!==================================================================================================!\\
