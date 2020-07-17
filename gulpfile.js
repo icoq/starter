@@ -20,50 +20,47 @@ const gulp = require("gulp"),
   browserSync = require("browser-sync").create();
 
 // src
-const dist = "./dist/",
-  src = "./src/",
-  path = {
-    dist: {
-      html: dist,
-      css: dist + "css/",
-      js: dist + "js/",
-      vendor: dist + "vendor/",
-      img: dist + "img/",
-      fonts: dist + "fonts/",
-    },
-    src: {
-      html: src + "*.html",
-      scss: src + "scss/main.scss",
-      js: src + "js/main.js",
-      vendorCSS: src + "vendor/**/*.css",
-      vendorJS: src + "vendor/**/*.js",
-      img: src + "img/**/*",
-      fonts: src + "fonts/**/*",
-    },
-    del: {
-      all: dist,
-      html: dist + "*.{html,map}",
-      css: dist + "css/",
-      js: dist + "js/",
-      vendorCSS: dist + "vendor/**/*.css",
-      vendorJS: dist + "vendor/**/*.js",
-      img: dist + "img/",
-      fonts: dist + "fonts/",
-    },
+const dist = "./dist/";
+const src = "./src/";
+const path = {
+  dist: {
+    html: dist,
+    css: dist + "css/",
+    js: dist + "js/",
+    vendor: dist + "vendor/",
+    img: dist + "img/",
+    fonts: dist + "fonts/",
+  },
+  src: {
+    html: src + "!(_*)*.html",
+    scss: src + "scss/main.scss",
+    js: src + "js/main.js",
+    vendorCSS: src + "vendor/**/*.css",
+    vendorJS: src + "vendor/**/*.js",
+    img: src + "img/**/*",
+    fonts: src + "fonts/**/*",
+  },
+  del: {
+    all: dist,
+    html: dist + "*.{html,map}",
+    css: dist + "css/",
+    js: dist + "js/",
+    vendorCSS: dist + "vendor/**/*.css",
+    vendorJS: dist + "vendor/**/*.js",
+    img: dist + "img/",
+    fonts: dist + "fonts/",
+  },
 
-    watch: {
-      html: src + "*.html",
-      scss: src + "scss/**/*.scss",
-      js: src + "js/**/*.js",
-      modulesHTML: src + "modules/**/*.html",
-      modulesSCSS: src + "modules/**/*.scss",
-      modulesJS: src + "modules/**/*.js",
-      vendorCSS: src + "vendor/**/*.css",
-      vendorJS: src + "vendor/**/*.js",
-      img: src + "img/**/*",
-      fonts: src + "fonts/**/*",
-    },
-  };
+  watch: {
+    html: src + "*.html",
+    scss: src + "scss/**/*.scss",
+    js: src + "js/**/*.js",
+    vendorCSS: src + "vendor/**/*.css",
+    vendorJS: src + "vendor/**/*.js",
+    img: src + "img/**/*",
+    fonts: src + "fonts/**/*",
+  },
+};
 
 // tasks
 gulp.task("html", () => {
@@ -83,45 +80,49 @@ gulp.task("html", () => {
 });
 
 gulp.task("css", () => {
-  return gulp
-    .src(path.src.scss, { allowEmpty: true })
-    .pipe(sourcemaps.init())
-    .pipe(sass().on("error", sass.logError))
-    .pipe(concat("main.css"))
-    .pipe(gcmq())
-    .pipe(webpCSS())
-    .pipe(
-      autoprefixer({
-        overrideBrowserslist: ["last 5 versions"],
-        cascade: true,
-      })
-    )
-    .pipe(cleanCSS({ level: 2 }))
-    .pipe(sourcemaps.write("./"))
-    .pipe(gulp.dest(path.dist.css))
-    .pipe(browserSync.stream());
+  return (
+    gulp
+      .src(path.src.scss, { allowEmpty: true })
+      .pipe(sourcemaps.init())
+      .pipe(sass().on("error", sass.logError))
+      // .pipe(concat("main.css"))
+      .pipe(gcmq())
+      .pipe(webpCSS())
+      .pipe(
+        autoprefixer({
+          overrideBrowserslist: ["last 5 versions"],
+          cascade: true,
+        })
+      )
+      .pipe(cleanCSS({ level: 2 }))
+      .pipe(sourcemaps.write("./"))
+      .pipe(gulp.dest(path.dist.css))
+      .pipe(browserSync.stream())
+  );
 });
 
 gulp.task("js", () => {
-  return gulp
-    .src(path.src.js, { allowEmpty: true })
-    .pipe(sourcemaps.init())
-    .pipe(
-      fileInclude({
-        prefix: "~",
-        basepath: "@file",
-      })
-    )
-    .pipe(concat("main.js"))
-    .pipe(
-      babel({
-        presets: ["@babel/env"],
-      })
-    )
-    .pipe(uglify({ toplevel: true }))
-    .pipe(sourcemaps.write("./"))
-    .pipe(gulp.dest(path.dist.js))
-    .pipe(browserSync.stream());
+  return (
+    gulp
+      .src(path.src.js, { allowEmpty: true })
+      .pipe(sourcemaps.init())
+      .pipe(
+        fileInclude({
+          prefix: "~",
+          basepath: "@file",
+        })
+      )
+      // .pipe(concat("main.js"))
+      .pipe(
+        babel({
+          presets: ["@babel/env"],
+        })
+      )
+      .pipe(uglify({ toplevel: true }))
+      .pipe(sourcemaps.write("./"))
+      .pipe(gulp.dest(path.dist.js))
+      .pipe(browserSync.stream())
+  );
 });
 
 gulp.task("vendorCSS", () => {
@@ -195,9 +196,9 @@ gulp.task("fonts", () => {
 
 //fonts generating
 function fontsRender(cb) {
-  let file_content = fs.readFileSync(src + "scss/helpers/fonts.scss");
+  let file_content = fs.readFileSync(src + "scss/_fonts.scss");
   if (file_content == "" || file_content == " ") {
-    fs.writeFile(src + "scss/helpers/fonts.scss", "", cb);
+    fs.writeFile(src + "scss/_fonts.scss", "", cb);
     return fs.readdir(dist + "fonts", function (err, items) {
       if (items) {
         let c_fontname;
@@ -206,7 +207,7 @@ function fontsRender(cb) {
           fontname = fontname[0];
           if (c_fontname != fontname) {
             fs.appendFile(
-              src + "scss/helpers/fonts.scss",
+              src + "scss/_fonts.scss",
               '@include font("' +
                 fontname +
                 '", "' +
@@ -261,22 +262,14 @@ gulp.task("watch", () => {
     notify: false,
   });
 
-  gulp.watch(
-    [path.watch.html, path.watch.modulesHTML],
-    gulp.series("delHTML", "html")
-  );
-  gulp.watch(
-    [path.watch.scss, path.watch.modulesSCSS],
-    gulp.series("delCSS", "css")
-  );
-  gulp.watch([path.watch.js, path.watch.modulesJS], gulp.series("delJS", "js"));
+  gulp.watch([path.watch.html], gulp.series("delHTML", "html"));
+  gulp.watch([path.watch.scss], gulp.series("delCSS", "css"));
+  gulp.watch([path.watch.js], gulp.series("delJS", "js"));
   gulp.watch(path.watch.img, gulp.series("delimg", "img"));
   gulp.watch(path.watch.fonts, gulp.series("delfonts", "fonts"));
   gulp.watch(path.watch.vendorCSS, gulp.series("delvendorCSS", "vendorCSS"));
   gulp.watch(path.watch.vendorJS, gulp.series("delvendorJS", "vendorJS"));
-  gulp
-    .watch([path.watch.html, path.watch.modulesHTML])
-    .on("change", browserSync.reload);
+  gulp.watch([path.watch.html]).on("change", browserSync.reload);
 });
 
 // build tasks

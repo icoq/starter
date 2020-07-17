@@ -1,11 +1,13 @@
-@import "./helpers/fonts.scss";
-@import "./helpers/normalize.scss";
-@import "./helpers/smart-grid.scss";
-@import "./helpers/variables.scss";
-@import "./helpers/mixins.scss";
-@import "../modules/_header/header.scss";
-@import "../modules/_sidebar/sidebar.scss";
-@import "../modules/_footer/footer.scss";
+@import "_fonts.scss";
+@import "_normalize.scss";
+@import "_smart-grid.scss";
+@import "_variables.scss";
+@import "_mixins.scss";
+@import "_header.scss";
+@import "_sidebar.scss";
+@import "_form.scss";
+@import "_popup.scss";
+@import "_footer.scss";
 
 .container {
   max-width: $maxContainerWidth;
