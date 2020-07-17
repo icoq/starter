@@ -1,6 +1,5 @@
 const gulp = require("gulp"),
   sass = require("gulp-sass"),
-  concat = require("gulp-concat"),
   autoprefixer = require("gulp-autoprefixer"),
   cleanCSS = require("gulp-clean-css"),
   uglify = require("gulp-uglify"),
@@ -80,49 +79,44 @@ gulp.task("html", () => {
 });
 
 gulp.task("css", () => {
-  return (
-    gulp
-      .src(path.src.scss, { allowEmpty: true })
-      .pipe(sourcemaps.init())
-      .pipe(sass().on("error", sass.logError))
-      // .pipe(concat("main.css"))
-      .pipe(gcmq())
-      .pipe(webpCSS())
-      .pipe(
-        autoprefixer({
-          overrideBrowserslist: ["last 5 versions"],
-          cascade: true,
-        })
-      )
-      .pipe(cleanCSS({ level: 2 }))
-      .pipe(sourcemaps.write("./"))
-      .pipe(gulp.dest(path.dist.css))
-      .pipe(browserSync.stream())
-  );
+  return gulp
+    .src(path.src.scss, { allowEmpty: true })
+    .pipe(sourcemaps.init())
+    .pipe(sass().on("error", sass.logError))
+    .pipe(gcmq())
+    .pipe(webpCSS())
+    .pipe(
+      autoprefixer({
+        overrideBrowserslist: ["last 5 versions"],
+        cascade: true,
+      })
+    )
+    .pipe(cleanCSS({ level: 2 }))
+    .pipe(sourcemaps.write("./"))
+    .pipe(gulp.dest(path.dist.css))
+    .pipe(browserSync.stream());
 });
 
 gulp.task("js", () => {
-  return (
-    gulp
-      .src(path.src.js, { allowEmpty: true })
-      .pipe(sourcemaps.init())
-      .pipe(
-        fileInclude({
-          prefix: "~",
-          basepath: "@file",
-        })
-      )
-      // .pipe(concat("main.js"))
-      .pipe(
-        babel({
-          presets: ["@babel/env"],
-        })
-      )
-      .pipe(uglify({ toplevel: true }))
-      .pipe(sourcemaps.write("./"))
-      .pipe(gulp.dest(path.dist.js))
-      .pipe(browserSync.stream())
-  );
+  return gulp
+    .src(path.src.js, { allowEmpty: true })
+    .pipe(sourcemaps.init())
+    .pipe(
+      fileInclude({
+        prefix: "~",
+        basepath: "@file",
+      })
+    )
+
+    .pipe(
+      babel({
+        presets: ["@babel/env"],
+      })
+    )
+    .pipe(uglify({ toplevel: true }))
+    .pipe(sourcemaps.write("./"))
+    .pipe(gulp.dest(path.dist.js))
+    .pipe(browserSync.stream());
 });
 
 gulp.task("vendorCSS", () => {
