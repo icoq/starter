@@ -1,0 +1,74 @@
+.modal {
+  position: fixed;
+  top: -100%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  padding: 30px;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0.25s linear 0.1s, opacity 0.3s ease, top 0.4s ease;
+
+  &.open {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
+    top: 0;
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.808);
+  }
+
+  &__close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 28px;
+    color: #000000;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 999;
+    transition: all 0.2s ease;
+    &:hover {
+      transform: scale(1.1);
+    }
+    @media only screen and (max-width: $sm) {
+      font-size: 20px;
+    }
+  }
+
+  &__container {
+    position: relative;
+    z-index: 999;
+    width: 95%;
+    height: 95%;
+    max-width: 990px;
+    max-height: 990px;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0 10px 0px #00000080;
+    margin: 0 auto;
+    padding: 50px;
+    @media only screen and (max-width: $sm) {
+      padding: 40px 20px 20px;
+    }
+    overflow-y: auto;
+    background: white;
+    text-align: center;
+    border-radius: 20px;
+  }
+}

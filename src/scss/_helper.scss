@@ -13,6 +13,10 @@
   align-items: center;
 }
 
+.scrollLock {
+  overflow: hidden;
+}
+
 @media only screen and (max-width: $md) {
   *:hover {
     color: inherit !important;

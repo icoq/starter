@@ -7,11 +7,16 @@
 @import "_header.scss";
 @import "_sidebar.scss";
 @import "_form.scss";
-@import "_popup.scss";
+//@import "_popup.scss";
 @import "_footer.scss";
+
+html {
+  scroll-behavior: smooth;
+}
 
 .main {
   color: $mainColor;
+  padding-top: $navHeight;
   &__container {
     height: 100vh;
     background-color: $mainBGColor;
