@@ -63,19 +63,21 @@ const path = {
 
 // tasks
 gulp.task("html", () => {
-  return gulp
-    .src(path.src.html)
-    .pipe(sourcemaps.init())
-    .pipe(
-      fileInclude({
-        prefix: "~",
-        basepath: "@file",
-      })
-    )
-    .pipe(htmlmin({ collapseWhitespace: true }))
-    .pipe(webpHTML())
-    .pipe(sourcemaps.write("./"))
-    .pipe(gulp.dest(path.dist.html));
+  return (
+    gulp
+      .src(path.src.html)
+      // .pipe(sourcemaps.init())
+      .pipe(
+        fileInclude({
+          prefix: "~",
+          basepath: "@file",
+        })
+      )
+      .pipe(htmlmin({ collapseWhitespace: true }))
+      .pipe(webpHTML())
+      // .pipe(sourcemaps.write("./"))
+      .pipe(gulp.dest(path.dist.html))
+  );
 });
 
 gulp.task("css", () => {
