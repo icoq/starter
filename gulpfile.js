@@ -66,6 +66,7 @@ gulp.task("html", () => {
   return (
     gulp
       .src(path.src.html)
+      .pipe(browserSync.stream())
       // .pipe(sourcemaps.init())
       .pipe(
         fileInclude({
@@ -75,7 +76,7 @@ gulp.task("html", () => {
       )
       .pipe(htmlmin({ collapseWhitespace: true }))
       .pipe(webpHTML())
-      // .pipe(sourcemaps.write("./"))
+      //.pipe(sourcemaps.write("./"))
       .pipe(gulp.dest(path.dist.html))
   );
 });
@@ -277,4 +278,4 @@ gulp.task(
     fontsRender
   )
 );
-gulp.task("dev", gulp.series("build", "watch"));
+gulp.task("dev", gulp.series("watch"));
