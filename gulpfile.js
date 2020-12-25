@@ -191,7 +191,7 @@ gulp.task("fonts", () => {
   );
 });
 
-//fonts generating
+//fonts generation
 function fontsRender(cb) {
   let file_content = fs.readFileSync(src + "scss/_fonts.scss");
   if (file_content == "" || file_content == " ") {
